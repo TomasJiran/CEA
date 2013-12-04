@@ -44,4 +44,14 @@ public class MyGenome implements Genome{
     
   }
 
+  @Override
+  public Object getOptimal() {
+    return (4-Math.sqrt(76))/6;
+  }
+
+  @Override
+  public Object getSolution() {
+    return x;
+  }
+
 }

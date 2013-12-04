@@ -5,33 +5,35 @@ import java.util.Collections;
 import java.util.List;
 
 public class Population {
-  private final int MAX_SIZE;         
+  private final int MAX_SIZE;        
   
   private List<Individual> individuals;
   private int size;
+  private int initSize;
+  private Individual fittest;
   
   private Class<? extends Genome> genomeClass;
   private Fitness myFitness;
+  private int maxAge;
   
   //-----------------------------------------------------------------------    
   public Population(Class<? extends Genome> genomeClass, Fitness myFitness,
-                    int size, int maxSize) {
-    this.genomeClass = genomeClass;
-    this.myFitness = myFitness;
-    this.size = size;
+                    int initSize, int maxSize, int maxAge) throws Exception {
+    Individual newIndiv;
     this.MAX_SIZE = maxSize;
     individuals = new ArrayList<>();
-  }
-  
-  //-----------------------------------------------------------------------    
-  public void init(int maxAge) throws Exception {  // creates individuals
-    Individual indiv;
-    for (int i = 0; i < size; i++) {
-      indiv = new Individual((Genome) genomeClass.newInstance(), myFitness, maxAge);
-      individuals.add(indiv);
+    size = initSize;
+    this.initSize = initSize;
+    this.genomeClass = genomeClass;
+    this.myFitness = myFitness;
+    this.maxAge = maxAge;
+
+    for (int i = 0; i < initSize; i++) {
+      newIndiv = new Individual((Genome) genomeClass.newInstance(), myFitness, maxAge);
+      individuals.add(newIndiv);
     }
   }
-
+  
   //-----------------------------------------------------------------------    
   public void evaluate() {  
     double sumFitVal = 0;
@@ -44,8 +46,25 @@ public class Population {
   
   //-----------------------------------------------------------------------      
   public void saveFittest() {
+    calcFittest();
+    fittest.beImmortal();       // the best one won't die this iteration
+  }
+  
+  //-----------------------------------------------------------------------      
+  private void calcFittest() {
     Collections.sort(individuals);
-    individuals.get(0).beImmortal();      // the best one won't die
+    fittest = individuals.get(0);
+  }
+  
+  //-----------------------------------------------------------------------      
+  public Individual getFittest() {
+    return fittest;
+  }
+
+  //-----------------------------------------------------------------------      
+  
+  public Individual generateIndividual() throws Exception {
+    return new Individual((Genome) genomeClass.newInstance(), myFitness, maxAge);
   }
 
   //-----------------------------------------------------------------------      

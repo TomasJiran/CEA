@@ -1,5 +1,6 @@
 package cea;
 
 public interface Fitness {
-  public double calcValue(Genome genome);
+  public double getValue(Genome genome);
+  public double getMaxValue(Genome genome);
 }

@@ -9,25 +9,47 @@ public class Cea {
   private final double reproduceProb = 0.01;
 
   private Population population;
-  private int maxAge;                         // max indivdual's age
-  private Individual bestSolution;            // best individual found
+  //private Individual bestSolution;            // best individual found
 
-  private Class<? extends Genome> genomeClass;  
-  private Fitness myFitness;
+  //private Class<? extends Genome> genomeClass;  
+  //private Fitness myFitness;
   private Random random = new Random();
 
   //-----------------------------------------------------------------------  
   public Cea(Class<? extends Genome> genomeClass, Fitness myFitness,
-             int popSize, int maxSize, int maxAge) throws Exception {
-    this.genomeClass = genomeClass;
-    this.myFitness = myFitness;
-    this.maxAge = maxAge;
-    population = new Population(this.genomeClass, 
-                                myFitness, popSize, maxSize);
-    population.init(maxAge);       // create and initialize population
+             int initSize, int maxSize, int maxAge) throws Exception {
+    population = new Population(genomeClass, myFitness, initSize, 
+                               maxSize, maxAge);
   }
 
-  //-----------------------------------------------------------------------  
+  //-----------------------------------------------------------------------    
+  public Object getBestSolution() {
+    return population.getFittest().getGenome().getSolution();   // returns best solution found
+  }
+  
+  //-----------------------------------------------------------------------    
+  public Object getOptimalSolution() {
+    return population.getFittest().getGenome().getOptimal();   // returns the optimal solution
+  }
+  
+  //-----------------------------------------------------------------------    
+  public void printPopulation(int generation) {
+    System.out.printf("GENERATION: %2d \n", generation);
+    System.out.println(population);
+  }
+
+  //-----------------------------------------------------------------------    
+  public void step() throws Exception { // main algorithm
+    evaluate();
+    saveFittest();
+    eliminate();
+    adapt();    
+    reproduce();  
+    update();
+  }
+
+  // PRIVATE METHODS:
+  //=======================================================================  
   private void evaluate() {
     population.evaluate();
   }
@@ -35,7 +57,6 @@ public class Cea {
   //-----------------------------------------------------------------------  
   private void saveFittest() {
     population.saveFittest();
-    bestSolution = population.getIndiviual(0);
   }
 
   //-----------------------------------------------------------------------  
@@ -57,8 +78,9 @@ public class Cea {
   //-----------------------------------------------------------------------    
   private void reproduce() throws Exception {
     List<Individual> parents = selectParents();
-    List<Individual> offspring = generateOffspring(parents);
-    population.addAll(offspring);       // add offspring to population
+    generateOffspring(parents);     // generates new population individuals
+    //List<Individual> offspring = generateOffspring(parents);
+    //population.addAll(offspring);       // add offspring to population
   }
 
   //-----------------------------------------------------------------------    
@@ -75,23 +97,19 @@ public class Cea {
   }
   
   //-----------------------------------------------------------------------    
-  private List<Individual> generateOffspring(List<Individual> parents)
-                                                      throws Exception {
-    List<Individual> offspring = new ArrayList();
+  private void generateOffspring(List<Individual> parents) throws Exception {
     Individual parent1, parent2, child;
 
     while (parents.size() >= 2) {
       parent1 = takeParent(parents);    // takes a parent from list
       parent2 = takeParent(parents);
-      child = new Individual((Genome) genomeClass.newInstance(),
-                              myFitness, maxAge);
+      child = population.generateIndividual();
+      //child = population.createIndividual();
       child.recombinate(parent1, parent2);
       child.mutate(mutateProb);
-      offspring.add(child);             // adds a child to list
+      population.addIndividual(child);  // adds a child 
     }
-    return offspring;
   }
-
   //-----------------------------------------------------------------------    
   private Individual takeParent(List<Individual> parents) {
     Individual parent;
@@ -107,23 +125,4 @@ public class Cea {
     population.update();
   }
 
-  //-----------------------------------------------------------------------    
-  public Individual getBestSolution() {
-    return bestSolution;        // returns best solution found
-  }
-  
-  //-----------------------------------------------------------------------    
-  public Population getPopulation() {
-    return population;  
-  }
-
-  //-----------------------------------------------------------------------    
-  public void step() throws Exception { // main algorithm
-    evaluate();
-    saveFittest();
-    eliminate();
-    adapt();    
-    reproduce();  
-    update();
-  }
 }

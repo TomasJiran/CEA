@@ -15,9 +15,9 @@ public class Individual implements Comparable<Individual> {
   public Individual(Genome myGenome, Fitness myFitness, int maxAge) {
     this.myGenome = myGenome;
     this.myFitness = myFitness;
+    MAX_AGE = maxAge;
     age = 0;
-    this.MAX_AGE = maxAge;
-    fitnessValue = myFitness.calcValue(myGenome);  // initial fitness evaluation    
+    fitnessValue = myFitness.getValue(myGenome);  // initial fitness evaluation    
   }
 
   //-------------------------------------------------------------------------  
@@ -25,7 +25,7 @@ public class Individual implements Comparable<Individual> {
     // TODO: cache
     double normFV;    // normalized fitness value
     double normAge;
-    fitnessValue = myFitness.calcValue(myGenome);
+    fitnessValue = myFitness.getValue(myGenome);
     normFV = fitnessValue/sumFitVal;    
     normAge = ((double)age)/MAX_AGE;
 
@@ -58,7 +58,6 @@ public class Individual implements Comparable<Individual> {
   
   //-------------------------------------------------------------------------  
   public void recombinate(Individual parent1, Individual parent2) {
-    age = 0;
     myGenome.crossoverS(parent1.myGenome.getStructure(), parent2.myGenome.getStructure());
     myGenome.crossoverT(parent1.myGenome.getTopology(), parent2.myGenome.getTopology());    
   }
