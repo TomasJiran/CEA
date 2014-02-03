@@ -1,22 +1,22 @@
 package cea;
 
+import static cea.MyConst.*;
 
-public class Individual implements Comparable<Individual> {
-  private final int MAX_AGE;          
+
+public class Individual {
   
   private double fitnessValue;
   private int age;
   private double EP;            // elimination probability
   private double RP;            // reproduction probability
   
-  private Genome myGenome;
+  private MyGenome myGenome;
   private Fitness myFitness;  
           
   //-------------------------------------------------------------------------  
-  public Individual(Genome myGenome, Fitness myFitness, int maxAge) {
-    MAX_AGE = maxAge;
+  public Individual(Fitness myFitness, int dim) {
     age = 0;
-    this.myGenome = myGenome;
+    myGenome = new MyGenome(dim);
     this.myFitness = myFitness;
   }
 
@@ -25,7 +25,7 @@ public class Individual implements Comparable<Individual> {
     double normFV;        // normalized fitness value
     double normAge;       // normalized age
     fitnessValue = myFitness.getValue(myGenome);  
-    normFV = fitnessValue/sumFitVal;    
+    normFV = 0.5 - fitnessValue/sumFitVal;    
     normAge = ((double)age)/MAX_AGE;
 
     if (age > MAX_AGE)   
@@ -42,8 +42,8 @@ public class Individual implements Comparable<Individual> {
   }
 
   //-------------------------------------------------------------------------  
-  public void mutate(double prob) {
-    myGenome.mutate(prob);
+  public void mutate() {
+    myGenome.mutate();
   }
   
   //-------------------------------------------------------------------------  
@@ -60,8 +60,10 @@ public class Individual implements Comparable<Individual> {
       foundBetter = false;
       count = 0;
       do {
-        nextSolution = myGenome.generateNextSolution(initSolution);
+        nextSolution = myGenome.generateNextSolution(bestSolution);
         count++;
+        if (myFitness.noMoreEvaluations())
+          return;
         if (myGenome.isBetter(myFitness.getTopologyValue(nextSolution),
                               myFitness.getTopologyValue(bestSolution))) {
           bestSolution = nextSolution;
@@ -81,6 +83,11 @@ public class Individual implements Comparable<Individual> {
   //-------------------------------------------------------------------------  
   public void initFitnessValue() {
     fitnessValue = myFitness.getValue(myGenome);
+  }
+  
+  //-------------------------------------------------------------------------  
+  public void randGenes() {
+    myGenome.randGenes();
   }
   
   //-------------------------------------------------------------------------  
@@ -105,35 +112,11 @@ public class Individual implements Comparable<Individual> {
   }
 
   //-------------------------------------------------------------------------  
-  public Genome getGenome() {
+  public MyGenome getGenome() {
     return myGenome;
   }
 
-  //-------------------------------------------------------------------------  
-  @Override
-  public int compareTo(Individual o) {
-    if (this.fitnessValue > o.fitnessValue)
-      return -1;
-    if (this.fitnessValue < o.fitnessValue)
-      return 1;
-    return 0;
-  }
-  
-  //-------------------------------------------------------------------------  
-  @Override
-  public String toString() {
-    String s = "";
-    s += String.format("fitness= %10f", fitnessValue);
-    s += "  ";
-    s += String.format("EP= %.10f", EP);
-    s += "  ";
-    s += String.format("RP= %.10f", RP);
-    s += "  ";
-    s += String.format("age= %2d", age);
-    s += "\n";
-    return s;
-  }
-  
+
   // PRIVATE METHODS:
   //=======================================================================  
   //-------------------------------------------------------------------------  

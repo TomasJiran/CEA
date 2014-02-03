@@ -1,0 +1,18 @@
+funcId = 9, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f9/bbobexp_f9_DIM2.dat, 1:100|7.4e+001
+funcId = 9, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f9/bbobexp_f9_DIM3.dat, 1:150|2.6e+002
+funcId = 9, DIM = 5, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f9/bbobexp_f9_DIM5.dat, 1:250|4.5e+003
+funcId = 9, DIM = 10, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f9/bbobexp_f9_DIM10.dat, 1:500|8.5e+003
+funcId = 9, DIM = 20, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f9/bbobexp_f9_DIM20.dat, 1:1000|7.5e+004
+funcId = 9, DIM = 40, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f9/bbobexp_f9_DIM40.dat, 1:2000|1.8e+005

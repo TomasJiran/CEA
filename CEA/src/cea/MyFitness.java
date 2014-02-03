@@ -1,41 +1,54 @@
 package cea;
 
+import static cea.MyConst.CACHE_CAPACITY;
+import javabbob.JNIfgeneric;
+
 
 public class MyFitness implements Fitness {
+  JNIfgeneric fgeneric;
+  int maxfunevals;
+  private Cache<Object, Double> cache;     
+  
   
   //-------------------------------------------------------------------------  
+  public MyFitness(JNIfgeneric fgeneric, int maxfunevals) {
+    this.fgeneric = fgeneric;
+    this.maxfunevals = maxfunevals;
+    cache = new Cache<>(CACHE_CAPACITY);        // LRU cache
+  }
+
+  //-------------------------------------------------------------------------  
   @Override
-  public double getValue(Genome genome) {
-    double x = (double) genome.getTopology();
+  public double getValue(MyGenome genome) {
+    double[] x = (double[]) genome.getTopology();
     return calcValue(x);
   }
 
   //-------------------------------------------------------------------------  
   @Override
   public double getTopologyValue(Object topology) {
-    double x = (double) topology;
-    return (x+2)*(x-1)*(x-3)+24;
+    double[] x = (double[]) topology;
+    double value;
+
+    if (! cache.containsKey(x)) {               // LRU cache
+      value = calcValue(x);
+      cache.put(x, value);
+      return value;
+    }
+    else
+      return cache.get(x);
   }
 
   //-------------------------------------------------------------------------  
   @Override
-  public double getMaxValue(Genome genome) {  // return optimal fitness value
-    double x = (double) genome.getOptimal();
-    return calcValue(x);
-  }
-
-  //-------------------------------------------------------------------------  
-  @Override
-  public String toString() {
-    String s = "Find local maximum of function";
-    s += "y = (x+2)(x-1)(x-3) + 24; x in <-3, 3): \n";
-    return s;
+  public boolean noMoreEvaluations() {
+    return maxfunevals <= 0;
   }
   
   // PRIVATE METHODS:
   //=======================================================================  
-  private double calcValue(double x) {
-    return (x+2)*(x-1)*(x-3)+24;
+  private double calcValue(double[] x) {
+    maxfunevals--;
+    return fgeneric.evaluate(x);
   }
-  
 }

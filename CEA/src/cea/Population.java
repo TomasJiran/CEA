@@ -3,39 +3,31 @@ package cea;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import static cea.MyConst.*;
 
 
 public class Population {
-
-  // TODO: global constants in 1 file
-  private final int MAX_SIZE;       
-  private final int MAX_AGE;
-  private final int CACHE_CAPACITY = 10;
+  private final int DIM;
+  private final int MAX_SIZE;
   
   private List<Individual> individuals;
   private int size;
-  private int initSize;
   private Individual fittest;
   
-  private Class<? extends Genome> genomeClass;
   private Fitness myFitness;
-  private Cache<Object, Double> cache;     
   
   //-----------------------------------------------------------------------    
-  public Population(Class<? extends Genome> genomeClass, Fitness myFitness,
-                    int initSize, int maxSize, int maxAge) throws Exception {
+  public Population(Fitness myFitness, int dim, int initSize, int maxSize) {
     Individual newIndiv;
+    this.DIM = dim;
     this.MAX_SIZE = maxSize;
     individuals = new ArrayList<>();
     size = initSize;
-    this.initSize = initSize;
-    this.genomeClass = genomeClass;
     this.myFitness = myFitness;
-    this.MAX_AGE = maxAge;
-    cache = new Cache<>(CACHE_CAPACITY);    
 
-    for (int i = 0; i < initSize; i++) {        // create individuals
-      newIndiv = new Individual((Genome) genomeClass.newInstance(), myFitness, maxAge);
+    for (int i = 0; i < size; i++) {        // create individuals
+      newIndiv = new Individual(myFitness, DIM);
+      newIndiv.randGenes();
       individuals.add(newIndiv);
       newIndiv.initFitnessValue();
     }
@@ -48,17 +40,19 @@ public class Population {
       sumFitVal += i.getFitnessValue();
 
     for (Individual i: individuals) {
-      if (!cache.containsKey(i)) {               // LRU cache
+//      if (! cache.containsKey(i)) {               // LRU cache
+        if (myFitness.noMoreEvaluations())
+          return;
         i.evaluate((double)size/MAX_SIZE, sumFitVal);
-        cache.put(i, i.getFitnessValue());
-      }
+  //      cache.put(i, i.getFitnessValue());
+   //   }
     }
   }
   
   //-----------------------------------------------------------------------      
   public void saveFittest() {                   // find and save fittest
-    calcFittest();
-    fittest.beImmortal();           // the best one won't die this iteration
+    fittest = calcFittest();
+    fittest.beImmortal();       // the best one won't die this iteration
   }
   
   //-----------------------------------------------------------------------      
@@ -68,8 +62,8 @@ public class Population {
 
   //-----------------------------------------------------------------------      
   
-  public Individual generateIndividual() throws Exception {
-    return new Individual((Genome) genomeClass.newInstance(), myFitness, MAX_AGE);
+  public Individual generateIndividual() {
+    return new Individual(myFitness, DIM);
   }
 
   //-----------------------------------------------------------------------      
@@ -124,9 +118,19 @@ public class Population {
   
   // PRIVATE METHODS:
   //=======================================================================  
-  private void calcFittest() {
-    Collections.sort(individuals);
-    fittest = individuals.get(0);
+  private Individual calcFittest() {
+    double min = Double.MAX_VALUE;
+    double f;
+    int index = 0;
+    
+    for (int i = 0; i < size; i++) {
+      f = individuals.get(i).getFitnessValue();
+      if ((f < min) && (f > 0)) {
+        min = f;
+        index = i;
+      }
+    }
+    return individuals.get(index);
   }
 
 }

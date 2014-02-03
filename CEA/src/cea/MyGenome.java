@@ -1,91 +1,96 @@
 package cea;
 
 import java.util.Random;
+import static cea.MyConst.*;
 
 
-public class MyGenome implements Genome{
-  private final int min = -3;
-  private final int max = 3;
-  private double x;
+public class MyGenome {
+  private final int DIM;
+  private final int MIN = -5;
+  private final int MAX = 5;  
+  private double[] x;                     // genes
   private Random random = new Random();
 
   //-------------------------------------------------------------------------  
-  public MyGenome() {
-    x = random.nextDouble()*(max-min) + min;
+  public MyGenome(int dim) {
+    DIM = dim;
+    x = new double[dim];
   }
-  
+
   //-------------------------------------------------------------------------  
-  @Override
   public void crossoverS(Object o1, Object o2, int childNumber) {
   }
 
   //-------------------------------------------------------------------------  
-  @Override
-  public void crossoverT(Object x1, Object x2, int childNumber) {
-    x = ((double)x1 + (double)x2 - childNumber/10)/2;
-  }
+  public void crossoverT(Object o1, Object o2, int childNumber) {
+    int index = random.nextInt(DIM);
+    double[] x1 = (double[]) o1;
+    double[] x2 = (double[]) o2;
+    
+    for (int i = 0; i < index; i++) 
+      x[i] = x1[i];
+    for (int j = index; j < DIM; j++) 
+      x[j] = x2[j];
+    }
 
   //-------------------------------------------------------------------------  
-  @Override
-  public void mutate(double prob) {
-    if (random.nextDouble() <= prob)
-      x = random.nextDouble()*(max-min) + min;
+  public void mutate() {
+    for (int i = 0; i < DIM; i++) {
+      if (random.nextDouble() <= MUTATE_PROB)
+        x[i] = 10. * random.nextDouble() - 5.;
+    }
   }
   
   //-------------------------------------------------------------------------  
-  @Override
   public Object generateNextSolution(Object solution) { // for adaptation
-    double x = (double) solution;
-    double dx = 0.05;
-    if (x + dx >= max)
-      return x;
-    return x + dx;
+    double s = (double) solution;
+    double ds = 0.1;
+    for (int i = 0; i < DIM; i++) {
+      if (x[i] + ds >= MAX)
+        x[i] = MIN;
+      else
+        x[i] += ds;
+    }
+    return x;
   }
 
   //-------------------------------------------------------------------------  
-  @Override
   public boolean isBetter(Object topology1, Object topology2) { // for adaptation
-    return (((double) topology1) > ((double) topology2));
+    return (((double) topology1) < ((double) topology2));
   }
   
   //-------------------------------------------------------------------------  
-  @Override
   public boolean pivotRuleSatisfied(boolean foundBetter, int count) { // for adaptation
     return foundBetter || count > 1;
   }
 
   //-------------------------------------------------------------------------  
-  @Override
   public boolean depthConditionSatisfied(int iterations) { // for adaptation
-    return iterations > 3;
+    return iterations > 5;
   }
   
   //-------------------------------------------------------------------------  
-  @Override
-  public Double getStructure() {
+  public void randGenes() {
+    for (int i = 0; i < DIM; i++) 
+      x[i] = 10. * random.nextDouble() - 5.;
+  }
+  
+  //-------------------------------------------------------------------------  
+  public Object getStructure() {
     return null;
   }
 
   //-------------------------------------------------------------------------  
-  @Override
-  public Double getTopology() {
+  public double[] getTopology() {       
     return x;
   }
 
   //-------------------------------------------------------------------------  
-  @Override
-  public void setTopology(Object topology) {
-    x = (double) topology;
+  public void setTopology(Object topology) {        // for adaptation
+    x = (double[]) topology;
   }
 
   //-------------------------------------------------------------------------  
-  @Override
-  public Object getOptimal() {      // return the optimal solution
-    return (4-Math.sqrt(76))/6;
-  }
-
-  //-------------------------------------------------------------------------  
-  @Override
   public Object getSolution() {
     return x;
   }

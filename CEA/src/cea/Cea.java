@@ -3,47 +3,47 @@ package cea;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import static cea.MyConst.*;
 
 
 public class Cea {
-  
-  // TODO: global constants in 1 file
-  private final double MUTATE_PROB = 0.02;      // probability of mutation
-  private final double REPRODUCE_PROB = 0.01;   // minimal probability for reproduction
-  private final int N_CHILDREN = 2;             // number of parent's children
     
   private Population population;
   private Random random = new Random();
 
+  
   //-----------------------------------------------------------------------  
-  public Cea(Class<? extends Genome> genomeClass, Fitness myFitness,
-             int initSize, int maxSize, int maxAge) throws Exception {
-    population = new Population(genomeClass, myFitness, initSize, 
-                               maxSize, maxAge);
+  public Cea(Fitness myFitness, int dim, int initSize, int maxSize) {
+    population = new Population(myFitness, dim, initSize, maxSize);
   }
 
   //-----------------------------------------------------------------------    
   public Object getBestSolution() {   // return the best solution found
     return population.getFittest().getGenome().getSolution();   
   }
+
+  //-----------------------------------------------------------------------    
+  public Object getBestValue() {   // return the best fitness value found
+    return population.getFittest().getFitnessValue();
+  }
   
   //-----------------------------------------------------------------------    
-  public Object getOptimalSolution() { // return the optimal solution
+  /*public Object getOptimalSolution() { // return the optimal solution
     return population.getFittest().getGenome().getOptimal();   
-  }
+  }*/
   
   //-----------------------------------------------------------------------    
   public void printPopulation(int generation) {
     System.out.printf("GENERATION: %2d \n", generation);
     System.out.println(population);
   }
-
+  
   //-----------------------------------------------------------------------    
-  public void step() throws Exception { // main algorithm
+  public void step() { // main algorithm
     evaluate();
     saveFittest();
     eliminate();
-    adapt();    
+    //adapt();    
     reproduce();  
     update();
   }
@@ -76,7 +76,7 @@ public class Cea {
   }
 
   //-----------------------------------------------------------------------    
-  private void reproduce() throws Exception {
+  private void reproduce() {
     List<Individual> parents = selectParents();
     generateOffspring(parents);     // generates new population of individuals
   }
@@ -95,7 +95,7 @@ public class Cea {
   }
   
   //-----------------------------------------------------------------------    
-  private void generateOffspring(List<Individual> parents) throws Exception {
+  private void generateOffspring(List<Individual> parents) {
     Individual parent1, parent2;
     Individual[] children = new Individual[N_CHILDREN];
 
@@ -105,7 +105,7 @@ public class Cea {
       for (int i = 0; i < N_CHILDREN; i++) {
         children[i] = population.generateIndividual();
         children[i].recombinate(parent1, parent2, i);
-        children[i].mutate(MUTATE_PROB);
+        children[i].mutate();
         population.addIndividual(children[i]);  // add a child to the population
       }
     }
@@ -125,5 +125,4 @@ public class Cea {
   private void update() {             // update for next iteration
     population.update();
   }
-
 }
