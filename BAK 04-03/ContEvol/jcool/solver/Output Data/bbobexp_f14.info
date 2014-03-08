@@ -1,0 +1,204 @@
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp_f14_DIM2.dat, 1:2294|1.4e+000
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp_f14_DIM3.dat, 1:3435|7.5e+000
+funcId = 14, DIM = 5, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp_f14_DIM5.dat, 1:2747|1.4e+001
+funcId = 14, DIM = 10, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp_f14_DIM10.dat, 1:4253|3.8e+001
+funcId = 14, DIM = 20, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp_f14_DIM20.dat, 1:9618|7.4e+001
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-01_f14_DIM2.dat, 1:2479|7.2e-001
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-01_f14_DIM3.dat, 1:2306|2.2e+000
+funcId = 14, DIM = 5, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-01_f14_DIM5.dat, 1:3198|1.4e+001
+funcId = 14, DIM = 10, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-01_f14_DIM10.dat, 1:4224|5.8e+001
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-02_f14_DIM2.dat, 1:100|3.1e+000
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-02_f14_DIM3.dat, 1:150|3.3e+000
+funcId = 14, DIM = 5, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-02_f14_DIM5.dat, 1:250|3.9e+000
+funcId = 14, DIM = 10, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-02_f14_DIM10.dat, 1:500|1.6e+001
+funcId = 14, DIM = 20, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-01_f14_DIM20.dat, 1:1000|2.9e+001
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-03_f14_DIM2.dat, 1:100|2.8e+000
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-03_f14_DIM3.dat, 1:150|4.2e+000
+funcId = 14, DIM = 5, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-03_f14_DIM5.dat, 1:250|4.2e+000
+funcId = 14, DIM = 10, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-03_f14_DIM10.dat, 1:500|1.7e+001
+funcId = 14, DIM = 20, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-02_f14_DIM20.dat, 1:1000|2.0e+001
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-04_f14_DIM2.dat, 1:100|1.5e+000
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-04_f14_DIM3.dat, 1:150|2.0e+000
+funcId = 14, DIM = 5, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-04_f14_DIM5.dat, 1:250|1.4e+001
+funcId = 14, DIM = 10, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-04_f14_DIM10.dat, 1:500|2.3e+001
+funcId = 14, DIM = 20, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-03_f14_DIM20.dat, 1:1000|2.5e+001
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-05_f14_DIM2.dat, 1:100|8.9e-001
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-05_f14_DIM3.dat, 1:150|3.0e+001
+funcId = 14, DIM = 5, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-05_f14_DIM5.dat, 1:250|8.5e+000
+funcId = 14, DIM = 10, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-05_f14_DIM10.dat, 1:500|6.8e+000
+funcId = 14, DIM = 20, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-04_f14_DIM20.dat, 1:1000|4.4e+001
+funcId = 14, DIM = 40, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp_f14_DIM40.dat, 1:2000|5.8e+001
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-06_f14_DIM2.dat, 1:100|2.7e+000
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-06_f14_DIM3.dat, 1:150|1.5e+000
+funcId = 14, DIM = 5, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-06_f14_DIM5.dat, 1:250|3.9e+000
+funcId = 14, DIM = 10, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-06_f14_DIM10.dat, 1:500|1.2e+001
+funcId = 14, DIM = 20, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-05_f14_DIM20.dat, 1:1000|2.6e+001
+funcId = 14, DIM = 40, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-01_f14_DIM40.dat, 1:2000|6.0e+001
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-07_f14_DIM2.dat, 1:842|1.8e-005
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-08_f14_DIM2.dat, 1:841|5.7e-005
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-07_f14_DIM3.dat, 1:845|1.5e-003
+funcId = 14, DIM = 5, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-07_f14_DIM5.dat, 1:1184|3.1e-002
+funcId = 14, DIM = 10, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-07_f14_DIM10.dat, 1:2309|9.9e-002
+funcId = 14, DIM = 20, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-06_f14_DIM20.dat, 1:5555|2.8e+000
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-09_f14_DIM2.dat, 1:5012|2.2e-007
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-08_f14_DIM3.dat, 1:5658|7.4e-007
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-10_f14_DIM2.dat, 1:5125|1.4e-006
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-09_f14_DIM3.dat, 1:5760|9.0e-007
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-11_f14_DIM2.dat, 1:5157|3.3e-008
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-10_f14_DIM3.dat, 1:6635|1.4e-006
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-12_f14_DIM2.dat, 1:5299|-8.5e-009
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-11_f14_DIM3.dat, 1:5787|3.6e-006
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-13_f14_DIM2.dat, 1:5881|1.5e-008
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-12_f14_DIM3.dat, 1:5775|1.0e-006
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-14_f14_DIM2.dat, 1:6027|1.7e-007
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-13_f14_DIM3.dat, 1:6146|7.0e-008
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-15_f14_DIM2.dat, 1:5913|-4.4e-009
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-14_f14_DIM3.dat, 1:6283|2.1e-006
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-16_f14_DIM2.dat, 1:6226|1.0e-008
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-15_f14_DIM3.dat, 1:6065|2.6e-007
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-17_f14_DIM2.dat, 1:5237|1.5e-006
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-16_f14_DIM3.dat, 1:6061|8.8e-007
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-18_f14_DIM2.dat, 1:200|5.0e-001
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-19_f14_DIM2.dat, 1:5647|-1.0e-008
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-20_f14_DIM2.dat, 1:5583|5.7e-007
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-17_f14_DIM3.dat, 1:6022|8.7e-007
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-21_f14_DIM2.dat, 1:5563|-9.2e-009
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-18_f14_DIM3.dat, 1:5968|1.8e-006
+funcId = 14, DIM = 2, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-22_f14_DIM2.dat, 1:5585|3.8e-007
+funcId = 14, DIM = 3, Precision = 1.000e-008, algId = 'CEA'
+% Continual Evolution Algorithm
+data_f14/bbobexp-19_f14_DIM3.dat, 1:6012|9.2e-007
